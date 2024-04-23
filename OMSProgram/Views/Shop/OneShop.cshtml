@@ -1,0 +1,80 @@
+﻿@model OMSProgram.Models.UserShopObject
+
+@switch (Model.Theme)
+{
+	case 0:
+		<link rel="stylesheet" href="/css/oneShopStyles/styleOne.css" />
+		<div id="OneShopBody">
+			<h1 id="ShopName">@Model.ShopName</h1>
+			<h4 id="ShopDescr">@Model.Description</h4>
+				<section class="py-5">
+				<div class="container px-4 px-lg-5 mt-5" style="float: left;">
+					<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+				@foreach (var item in Model.UserProd)
+				{
+							<div class="col mb-5">
+								<div class="card w-200">
+									<!-- Product image-->
+									<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+									<!-- Product details-->
+									<div class="card-body p-4">
+										<div class="text-center">
+											<!-- Product name-->
+											<h5 class="fw-bolder">@item.Name</h5>
+											<p class="ProductDescr">@item.Description</p>
+											<!-- Product price-->
+											@item.Price @item.CountType
+										</div>
+									</div>
+								</div>
+                            </div>
+                        
+				}
+						</div>
+					</div>
+				</section>
+			</div>
+	break;
+	case 1:
+		<link rel="stylesheet" href="/css/oneShopStyles/styleTwo.css" />
+		<div>
+			<h1>@Model.ShopName Тема 1</h1>
+			<h4>@Model.Description</h4>
+
+			<div class="container-xxl py-5">
+				<div class="container">
+					<div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
+						<div class="tab-content">
+							<div id="tab-1" class="tab-pane fade show p-0 active">
+								<div class="row g-4">
+									@foreach (var item in Model.UserProd)
+									{
+									<div class="col-lg-6">
+										<div class="d-flex align-items-center">
+											<img class="flex-shrink-0 img-fluid rounded" src="img/menu-1.jpg" alt="" style="width: 80px;">
+											<div class="w-100 d-flex flex-column text-start ps-4">
+												<h5 class="d-flex justify-content-between border-bottom pb-2">
+													<span>@item.Name</span>
+													<span class="text-primary">@item.Price @item.CountType</span>
+												</h5>
+												<small class="fst-italic">@item.Description</small>
+											</div>
+										</div>
+									</div>
+									}
+								</div>
+							</div>
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>
+	break;
+	case 2:
+		<link rel="stylesheet" href="/css/oneShopStyles/styleThree.css" />
+		<div>
+			<h1>@Model.ShopName Тема 1</h1>
+			<h4>@Model.Description</h4>
+		</div>
+	break;
+}

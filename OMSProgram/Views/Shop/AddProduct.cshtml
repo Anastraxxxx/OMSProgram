@@ -1,0 +1,43 @@
+﻿@model OMSProgram.Models.ViewModels.Product
+<h2>Добавете продукт</h2>
+<form id="shop" method="post" asp-action="AddProduct" asp-controller="Shop">
+	<h4>Добавете продукт:</h4>
+	<hr />
+	<div class="form-group row">
+		<label asp-for="Name" class="col-md-2"></label>
+		<div class="col-md-10">
+			<input asp-for="Name" class="form-control" />
+			<span asp-validation-for="Name" class="text-danger"></span>
+		</div>
+	</div>
+	<hr />
+	<div class="form-group row">
+		<label asp-for="Price" class="col-md-2"></label>
+		<div class="col-md-10">
+			<input asp-for="Price" type="number" class="form-control" />
+			<span asp-validation-for="Price" class="text-danger"></span>
+		</div>
+	</div>
+	<hr />
+	<div class="form-group row">
+		<label asp-for="Description" class="col-md-2"></label>
+		<div class="col-md-10">
+			<input asp-for="Description" class="form-control" />
+			<span asp-validation-for="Description" class="text-danger"></span>
+		</div>
+	</div>
+	<hr />
+	<div class="form-group row">
+		<label asp-for="CountType" class="col-md-2"></label>
+		<div class="col-md-10">
+			<input asp-for="CountType" class="form-control" />
+			<span asp-validation-for="CountType" class="text-danger"></span>
+		</div>
+	</div>
+	<hr />
+	<div class="form-group">
+		<div class="col-md-10 offset-md-2">
+			<input type="submit" value="Готово" class="btn btn bg-success"
+		</div>
+	</div>
+</form>

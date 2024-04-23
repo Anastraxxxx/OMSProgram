@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ApplicationUser>
+
+
+<div class="row">
+	<div class="col-md-8 offset-md-2">
+		<table class="table">
+			<thead>
+				<tr class="text-center">
+					<th>Псевдоним</th>
+					<th>Имейл</th>
+					<th>Име</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var item in Model)
+				{
+					<tr>
+						<td class="align-middle">
+							@Html.DisplayFor(modelItem => item.UserName)
+						</td>
+						<td class="align-middle">
+							@Html.DisplayFor(modelItem => item.Email)
+						</td>
+						<td class="align-middle">
+							@Html.DisplayFor(modelItem => item.Name)
+						</td>
+						<td class=" align-middle">
+							<a class="btn btn-outline-primary" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash">Изтрий</i></a>
+							<a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye">Детайли</i></a>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

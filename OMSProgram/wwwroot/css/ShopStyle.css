@@ -1,0 +1,30 @@
+﻿
+.shopContainer{
+    margin-bottom: 6%;
+    margin-left:1px;
+    padding-top: 5px;
+    padding-right:3%;
+    padding-bottom:1%;
+    border-style: solid;
+    border-color: darkblue;
+    width:20%;
+    min-height: 300px;
+    float:left;
+    text-align:center;
+}
+.shopPic{
+    margin-left:19% !important;
+    width:80% !important;
+}
+.shopPic:hover{
+    margin-left:15% !important;
+    width:90% !important;
+}
+
+.shopA {
+    color: darkblue;
+    font-family: 'Times New Roman';
+    font-size: 105%;
+    text-align:center;
+    padding-left:15%;
+}

@@ -1,0 +1,40 @@
+﻿@model OMSProgram.Models.Shop
+
+@{
+    ViewData["Title"] = "EditShop";
+}
+
+<h1>Промяна на магазина</h1>
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditShop">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-md-10">
+                <label asp-for="Theme" class="control-label"></label>
+                <select asp-for="Theme"
+                        asp-items="@OMSProgram.Utility.Helper.GetThemesForDropDown()"
+                        class="form-control"></select>
+                <span asp-validation-for="Theme" class="text-danger"></span>
+            </div>
+            <hr />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <hr />
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <hr />
+            <div class="form-group">
+                <input type="submit" value="Запази" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+

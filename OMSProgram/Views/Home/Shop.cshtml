@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Shop>
+<link href="~/css/ShopStyle.css" rel="stylesheet" />
+@foreach (var item in Model)
+{
+		<div class="shopContainer">
+			<p class="shopA">@Html.DisplayFor(modelItem => item.Name)</p>
+			<a asp-action="OneShop" asp-controller="Shop" asp-route-id="@item.UserId"><img class="shopPic" src="/pics/shopButton.png" /></a>
+		</div>
+
+}

@@ -1,0 +1,83 @@
+﻿@using OMSProgram.Utility
+@inject Microsoft.AspNetCore.Identity.SignInManager<OMSProgram.Models.ApplicationUser> signInManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - OMSProgram</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/siteLayoutStyle.css" />
+</head>
+<body style="background-color:darkgray;">
+    <header>
+        <div class="container-xxl position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+                <a>
+                    <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>OMS</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0 pe-4">
+                      
+                        <a class="nav-link nav-bar-item px-10" style="padding-left:10px" asp-action="Index" asp-controller="Home">Начало</a>
+                        <a class="nav-link nav-bar-item px-10" style="padding-left:10px" asp-action="Shop" asp-controller="Home">Магазини</a>
+                        @if (User.IsInRole("ShKeeper"))
+                        {
+                            <a class="nav-link nav-bar-item px-10" style="padding-left:10px" asp-action="MyShop" asp-controller="Home">Моя магазини</a>
+                            <a class="nav-link nav-bar-item px-10" style="padding-left:10px" asp-action="AddProduct" asp-controller="Shop">Добави продукт</a>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a class="nav-link nav-bar-item px-10" style="padding-left:10px" asp-action="Accounts" asp-controller="Home">Акаунти</a>
+                            <a class="nav-link nav-bar-item px-10" style="padding-left:10px" asp-action="ShopCheck" asp-controller="Home">Проверка</a>
+                        }
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Страници</a>
+                            <div class="dropdown-menu m-0">
+                                <a class="nav-link nav-bar-item px-10" asp-action="Index" asp-controller="Home">Начало</a>
+                                <a class="nav-link nav-bar-item px-10" asp-action="Shop" asp-controller="Home">Магазини</a>
+                                @if (User.IsInRole("ShKeeper"))
+                                {
+                                    <a class="nav-link nav-bar-item px-10" asp-action="MyShop" asp-controller="Home">Моя магазини</a>
+                                    <a class="nav-link nav-bar-item px-10" asp-action="AddProduct" asp-controller="Shop">Добави продукт</a>
+                                }
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a class="nav-link nav-bar-item px-10" asp-action="Accounts" asp-controller="Home">Акаунти</a>
+                                    <a class="nav-link nav-bar-item px-10" asp-action="ShopCheck" asp-controller="Home">Проверка</a>
+                                }
+                            </div>
+                        </div>
+                        @if (User.IsInRole("ShKeeper") || User.IsInRole("Admin") || User.IsInRole("User"))
+                        {
+                            <a class="nav-link nav-bar-item px-10" style="padding-left:10px" asp-action="Logoff" asp-controller="Account">Излез</a>
+                        }
+                        else
+                        {
+                            <a class="nav-link nav-bar-item px-10" style="padding-left:10px" asp-action="Login" asp-controller="Account">Влез</a>
+                            <a class="nav-link nav-bar-item px-10" style="padding-left:10px" asp-action="Register" asp-controller="Account">Регистрация</a>
+                        }
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3" style="padding-top: 10%; position:absolute bottom;">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
